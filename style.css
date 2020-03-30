@@ -66,6 +66,8 @@ img
 	width: 100%;
 }
 
+
+
 .image-full
 {
 	display: block;
@@ -98,16 +100,37 @@ img.aligncenter {
 
 /* Header */
 
-#header-wrapper {
-	height: 240px;
-	background: url(images/img1.jpg) no-repeat center;
-	background-size: 960px 240px;
+
+#header-image {
+	display: block;
+	max-width: 960px;
+	max-height: 240px;
+	margin-left: auto;
+	margin-right: auto;
+	opacity: 1;
+	border-radius: 20px;
 }
 
-#header {
+.center {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: rgb(255, 255, 255);
+}
+
+.center a {
+	color: rgb(255, 255, 255);
+	font-weight: bold;
+}
+
+
+.header {
+	position: relative;
+	margin: 0 auto;
 	width: 960px;
 	height: 240px;
-	margin: 0 auto;
 }
 
 /* Logo */
@@ -266,14 +289,25 @@ table, th, td {
 	padding-bottom: 10px;
 }
 
+.post .postImage {
+	display: block;
+	width: 100%;
+	border-radius: 20px;
+}
+
 .post .title {
 	padding-top: 10px;
+	padding-bottom: 10px;
 	letter-spacing: -2px;
 }
 
 .post .title a {
 	color: #1A1A1A;
 	border: none;
+}
+
+.post .table {
+	width: 100%
 }
 
 .post .meta {
@@ -304,6 +338,10 @@ table, th, td {
 #sidebar a:hover {
 	text-decoration: none;
 	color: #FFF;
+}
+
+#sidebar .title {
+	color: red;
 }
 
 #sidebar ul {
