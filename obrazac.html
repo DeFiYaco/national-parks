@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
@@ -9,14 +7,14 @@
 	<title>Nacionalni parkovi</title>
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600' rel='stylesheet'
 		type='text/css' />
-	<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="dizajn.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 
 <body>
 	<div id="wrapper">
 		<div id="header-wrapper">
 			<div class="header"><a href="index.html">
-					<img id="header-image" src="./images/header3.jpg"></img>
+					<img id="header-image" src="./images/header3.jpg" alt="Planine">
 				</a>
 				<div class="center"><a id="headerTitle" href="index.html">NACIONALNI PARKOVI</a></div>
 			</div>
@@ -34,29 +32,35 @@
 								<input type="text" id="name" name="name">
 
 								<label>Tip parka:</label>
-								<ul>
-									<label for="natural">Prirodan</label>
-									<input type="radio" id="natural" name="type" value="natural">
-									<input type="radio" id="fake" name="type" value="fake">
-									<label for="fake">Uređen</label><br>
+								<ul class="formlist">
+									<li>
+										<label for="natural">Prirodan</label>
+										<input type="radio" id="natural" name="type" value="natural">
+										<input type="radio" id="fake" name="type" value="fake">
+										<label for="fake">Uređen</label><br>
+									</li>
+
 								</ul>
 
 								<label>Kontinent:</label>
-								<ul id="continents">
-									<input type="checkbox" id="africa" name="africa" value="Africa">
-									<label for="africa">Afrika</label><br>
-									<input type="checkbox" id="antarctica" name="antarctica" value="Antarctica">
-									<label for="antarctica">Antarktika</label><br>
-									<input type="checkbox" id="australia" name="australia" value="Australia">
-									<label for="australia">Australija</label><br>
-									<input type="checkbox" id="samerica" name="samerica" value="SouthAmerica">
-									<label for="samerica">Južna Amerika</label><br>
-									<input type="checkbox" id="namerica" name="namerica" value="NorthAmerica">
-									<label for="nameica">Sjeverna Amerika</label><br>
-									<input type="checkbox" id="europe" name="europe" value="Europe">
-									<label for="europe">Europa</label><br>
-									<input type="checkbox" id="asia" name="asia" value="Asia">
-									<label for="asia">Azija</label><br>
+								<ul class="formlist">
+									<li>
+										<input type="checkbox" id="africa" name="africa" value="Africa">
+										<label for="africa">Afrika</label><br>
+										<input type="checkbox" id="antarctica" name="antarctica" value="Antarctica">
+										<label for="antarctica">Antarktika</label><br>
+										<input type="checkbox" id="australia" name="australia" value="Australia">
+										<label for="australia">Australija</label><br>
+										<input type="checkbox" id="samerica" name="samerica" value="SouthAmerica">
+										<label for="samerica">Južna Amerika</label><br>
+										<input type="checkbox" id="namerica" name="namerica" value="NorthAmerica">
+										<label for="namerica">Sjeverna Amerika</label><br>
+										<input type="checkbox" id="europe" name="europe" value="Europe">
+										<label for="europe">Europa</label><br>
+										<input type="checkbox" id="asia" name="asia" value="Asia">
+										<label for="asia">Azija</label><br>
+									</li>
+
 								</ul>
 
 								<label for="country">Država</label>
@@ -81,8 +85,8 @@
 
 								<button type="reset" value="Reset">Reset</button>
 								<button type="submit" value="Submit">Submit</button>
-								 						
-				
+
+
 							</form>
 						</div>
 						<div style=" clear: both;">&nbsp;
