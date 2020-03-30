@@ -27,36 +27,93 @@
 			<div id="page-bgtop">
 				<div id="page-bgbtm">
 					<div id="content">
-						
-							<div style=" clear: both;">&nbsp;
-							</div>
+						<div>
+							<h2>Obrazac za pretraživanje</h2>
+							<form id="input-form">
+								<label for="name">Naziv parka</label>
+								<input type="text" id="name" name="name">
+
+								<label>Tip parka:</label>
+								<ul>
+									<label for="natural">Prirodan</label>
+									<input type="radio" id="natural" name="type" value="natural">
+									<input type="radio" id="fake" name="type" value="fake">
+									<label for="fake">Uređen</label><br>
+								</ul>
+
+								<label>Kontinent:</label>
+								<ul id="continents">
+									<input type="checkbox" id="africa" name="africa" value="Africa">
+									<label for="africa">Afrika</label><br>
+									<input type="checkbox" id="antarctica" name="antarctica" value="Antarctica">
+									<label for="antarctica">Antarktika</label><br>
+									<input type="checkbox" id="australia" name="australia" value="Australia">
+									<label for="australia">Australija</label><br>
+									<input type="checkbox" id="samerica" name="samerica" value="SouthAmerica">
+									<label for="samerica">Južna Amerika</label><br>
+									<input type="checkbox" id="namerica" name="namerica" value="NorthAmerica">
+									<label for="nameica">Sjeverna Amerika</label><br>
+									<input type="checkbox" id="europe" name="europe" value="Europe">
+									<label for="europe">Europa</label><br>
+									<input type="checkbox" id="asia" name="asia" value="Asia">
+									<label for="asia">Azija</label><br>
+								</ul>
+
+								<label for="country">Država</label>
+								<input type="text" id="country" name="country">
+
+								<label for="county">Predio/Županija</label>
+								<input type="text" id="county" name="county">
+
+								<label for="alt">Nadmorska visina</label>
+								<input type="text" id="alt" name="alt">
+
+								<label for="geo">Koordinate</label>
+								<input type="text" id="geo" name="geo">
+
+								<label for="surface">Odaberi površinu:</label>
+								<select id="surface" name="surface" multiple>
+									<option value="1">Maleni</option>
+									<option value="2">Srednji</option>
+									<option value="3">Veliki</option>
+									<option value="4">Ogromni</option>
+								</select>
+
+								<button type="reset" value="Reset">Reset</button>
+								<button type="submit" value="Submit">Submit</button>
+								 						
+				
+							</form>
 						</div>
-						<!-- end #content -->
-						<div id="sidebar">
-							<ul>
-								<li>
-									<h2>Kazalo</h2>
-									<ul>
-										<li><a href="index.html">Početna</a></li>
-										<li><a href="obrazac.html">Pretraživanje</a></li>
-										<li><a href="https://www.fer.unizg.hr/predmet/or">Stranica predmeta</a></li>
-										<li><a href="https://www.fer.unizg.hr/" target="_blank">FER</a></li>
-										<li><a href="mailto:jakov.buratovic@fer.hr">E-pošta</a></li>
-									</ul>
-								</li>
-							</ul>
+						<div style=" clear: both;">&nbsp;
 						</div>
-						<!-- end #sidebar -->
-						<div style="clear: both;">&nbsp;</div>
 					</div>
+					<!-- end #content -->
+					<div id="sidebar">
+						<ul>
+							<li>
+								<h2>Kazalo</h2>
+								<ul>
+									<li><a href="index.html">Početna</a></li>
+									<li><a href="obrazac.html">Pretraživanje</a></li>
+									<li><a href="https://www.fer.unizg.hr/predmet/or">Stranica predmeta</a></li>
+									<li><a href="https://www.fer.unizg.hr/" target="_blank">FER</a></li>
+									<li><a href="mailto:jakov.buratovic@fer.hr">E-pošta</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<!-- end #sidebar -->
+					<div style="clear: both;">&nbsp;</div>
 				</div>
 			</div>
-			<!-- end #page -->
 		</div>
-		<div id="footer">
-			<p>&copy; Autor: Jakov Buratović</p>
-		</div>
-		<!-- end #footer -->
+		<!-- end #page -->
+	</div>
+	<div id="footer">
+		<p>&copy; Autor: Jakov Buratović</p>
+	</div>
+	<!-- end #footer -->
 </body>
 
 </html>
