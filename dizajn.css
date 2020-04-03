@@ -109,6 +109,10 @@ table, th, td {
 	border: 1px solid black;
 }
 
+/* Color every odd row and every third row */
+tr:nth-child(odd) {background: #d3d3d3}
+tr:nth-child(3n) {background: #a9a9a9}
+
 .post {
 	clear: both;
 	padding-bottom: 10px;
@@ -228,6 +232,7 @@ form {
 	list-style: none;
 	column-count: 2;
 }
+
 
 
 /* Footer */
