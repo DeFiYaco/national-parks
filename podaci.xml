@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE data SYSTEM "gramatika.dtd">
+<?xml-stylesheet type="text/xsl" href="pretvorba.xsl"?>
 <data>
     <nationalPark id="np1" wikiId="Q189849">
         <name>Plitvička jezera</name>
@@ -38,11 +39,11 @@
         <location type="Prirodan" continent="SjevernaAmerika">
             <country>SAD</country>
             <counties>
-                <county>Park County, Wyoming</county>
+                <county>Park County (Wyoming)</county>
                 <county>Telton County</county>
                 <county>Gallatin County</county>
                 <county>Fremont County</county>
-                <county>Park County, Montana</county>
+                <county>Park County (Montana)</county>
             </counties>
             <geo>
                 <latitude dir="N">
@@ -128,7 +129,7 @@
         <location type="Prirodan" continent="JuznaAmerika">
             <country>Čile</country>
             <counties>
-                <county>Ličko senjska</county>
+                <county>Magallanes Region</county>
             </counties>
             <geo>
                 <latitude dir="S">
