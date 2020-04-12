@@ -1,0 +1,29 @@
+<!ELEMENT data (nationalPark)*>
+<!ELEMENT nationalPark (name, location, visitors?, year, contact?, gov)>
+<!ATTLIST nationalPark id ID #REQUIRED
+                        wikiId CDATA #REQUIRED>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT location (country, counties?, geo, altitude?, area)>
+<!ATTLIST location type (Prirodan|Ureden) "Prirodan"
+                    continent (Afrika|Azija|SjevernaAmerika|JuznaAmerika|Europa|Australija|Antarktika) #REQUIRED>
+<!ELEMENT country (#PCDATA)>
+<!ELEMENT counties (county)+>
+<!ELEMENT county (#PCDATA)>
+<!ELEMENT geo (latitude, longitude)>
+<!ELEMENT latitude (deg, min, sec?)>
+<!ELEMENT longitude (deg, min, sec?)>
+<!ELEMENT deg (#PCDATA)>
+<!ELEMENT min (#PCDATA)>
+<!ELEMENT sec (#PCDATA)>
+<!ATTLIST latitude dir (N|S) #REQUIRED>
+<!ATTLIST longitude dir (E|W) #REQUIRED>
+<!ELEMENT altitude (#PCDATA)>
+<!ELEMENT area (#PCDATA)>
+<!ELEMENT visitors (#PCDATA)>
+<!ELEMENT year (#PCDATA)>
+<!ELEMENT contact (tel*, email*)>
+<!ELEMENT tel (#PCDATA)>
+<!ATTLIST tel dialCode CDATA #REQUIRED>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT gov (#PCDATA)>
+<!ATTLIST gov unesco (DA|NE) "NE">
