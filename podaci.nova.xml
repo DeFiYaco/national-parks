@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE data SYSTEM "gramatika.dtd">
+<?xml-stylesheet type="text/xsl" href="pretvorba.nova.xsl"?>
+<data>
+    <nationalPark id="np1" wikiId="Q189849">
+        <name>Plitvička jezera</name>
+        <location type="Prirodan" continent="Europa">
+            <country>Hrvatska</country>
+            <counties>
+                <county>Ličko senjska županija</county>
+            </counties>
+            <geo>
+                <latitude dir="N">
+                    <deg>44</deg>
+                    <min>52</min>
+                    <sec>50</sec>
+                </latitude>
+                <longitude dir="E">
+                    <deg>15</deg>
+                    <min>36</min>
+                    <sec>58</sec>
+                </longitude>
+            </geo>
+            <altitude>367 m</altitude>
+            <area>296.85</area>
+        </location>
+        <visitors>1367304</visitors>
+        <year>1979</year>
+        <contact>
+            <tel dialCode="+385">
+                (0)53 751 015
+            </tel>
+            <email>info@np-plitvicka-jezera.hr</email>
+        </contact>
+        <gov unesco="DA">Javna ustanova Nacionalni park Plitvička jezera</gov>
+    </nationalPark>
+    <nationalPark id="np2" wikiId="Q351">
+        <name>Yellowstone</name>
+        <location type="Prirodan" continent="SjevernaAmerika">
+            <country>SAD</country>
+            <counties>
+                <county>Park County (Wyoming)</county>
+                <county>Telton County</county>
+                <county>Gallatin County</county>
+                <county>Fremont County</county>
+                <county>Park County (Montana)</county>
+            </counties>
+            <geo>
+                <latitude dir="N">
+                    <deg>44</deg>
+                    <min>36</min>
+                </latitude>
+                <longitude dir="W">
+                    <deg>110</deg>
+                    <min>30</min>
+                </longitude>
+            </geo>
+            <area>8983.18</area>
+        </location>
+        <visitors>4115000</visitors>
+        <year>1978</year>
+        <gov unesco="DA">U.S. National Park Service</gov>
+    </nationalPark>
+    <nationalPark id="np3" wikiId="Q828155">
+        <name>Krka</name>
+        <location type="Prirodan" continent="Europa">
+            <country>Hrvatska</country>
+            <counties>
+                <county>Šibensko-kninska</county>
+            </counties>
+            <geo>
+                <latitude dir="N">
+                    <deg>43</deg>
+                    <min>51</min>
+                    <sec>32</sec>
+                </latitude>
+                <longitude dir="E">
+                    <deg>15</deg>
+                    <min>58</min>
+                    <sec>34</sec>
+                </longitude>
+            </geo>
+            <area>109</area>
+        </location>
+        <visitors>683739</visitors>
+        <year>1985</year>
+        <contact>
+            <tel dialCode="+385">
+                (0)22 201777
+            </tel>
+            <email> info@npk.hr</email>
+        </contact>
+        <gov unesco="DA">Javna ustanova Nacionalni park Krka</gov>
+    </nationalPark>
+    <nationalPark id="np4" wikiId="Q24451">
+        <name>Kruger</name>
+        <location type="Prirodan" continent="Afrika">
+            <country>JAR</country>
+            <counties>
+                <county>Limpopo</county>
+                <county>Mpumalanga</county>
+            </counties>
+            <geo>
+                <latitude dir="S">
+                    <deg>24</deg>
+                    <min>0</min>
+                    <sec>41</sec>
+                </latitude>
+                <longitude dir="E">
+                    <deg>31</deg>
+                    <min>29</min>
+                    <sec>7</sec>
+                </longitude>
+            </geo>
+            <altitude>200 - 400 m</altitude>
+            <area>19485</area>
+        </location>
+        <visitors>1659793</visitors>
+        <year>1926</year>
+        <contact>
+            <tel dialCode="+27">
+                (0)13 735 4000
+            </tel>
+        </contact>
+        <gov unesco="DA">South African National Parks</gov>
+    </nationalPark>
+    <nationalPark id="np5" wikiId="Q901646">
+        <name>Torres del Paine</name>
+        <location type="Prirodan" continent="JuznaAmerika">
+            <country>Čile</country>
+            <counties>
+                <county>Magallanes Region</county>
+            </counties>
+            <geo>
+                <latitude dir="S">
+                    <deg>51</deg>
+                    <min>0</min>
+                    <sec>0</sec>
+                </latitude>
+                <longitude dir="W">
+                    <deg>73</deg>
+                    <min>0</min>
+                    <sec>0</sec>
+                </longitude>
+            </geo>
+            <area>1814.14</area>
+        </location>
+        <visitors>252447</visitors>
+        <year>1959</year>
+        <contact>
+            <email>contacto@torresdelpaine.com</email>
+        </contact>
+        <gov unesco="DA">Corporación Nacional Forestal</gov>
+    </nationalPark>
+</data>

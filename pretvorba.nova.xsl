@@ -30,38 +30,73 @@
                                     <div id="post">
                                         <div id="entry">
                                             <h2>Nacionalni parkovi</h2>
-                                            <table class="table">
+                                            <table>
                                                 <tr>
                                                     <th>Naziv parka</th>
                                                     <th>Država</th>
                                                     <th>Predio</th>
-                                                    <th>Površina (km<sup>2</sup>)</th>
+                                                    <th>Površina (km<sup>2</sup>)
+                                                    </th>
                                                     <th>UNESCO</th>
                                                 </tr>
                                                 <xsl:for-each select="data/nationalPark">
-                                                    <tr>
-                                                        <td>
-                                                            <xsl:value-of select="name"/>
-                                                        </td>
-                                                        <td>
-                                                            <xsl:value-of select="location/country"/>
-                                                        </td>
-                                                        <td>
-                                                            <xsl:for-each select="location/counties/county">
-                                                                <xsl:value-of select="."/>
-                                                                <xsl:if test="position() != last()">
-                                                                    <xsl:text>, </xsl:text>
-                                                                </xsl:if>
-                                                            </xsl:for-each>
-                                                        </td>
-                                                        <td>
-                                                            <xsl:value-of select="location/area"/>
-                                                        </td>
+                                                    <xsl:sort select="name"/>
+                                                    <xsl:choose>
+                                                        <xsl:when test="position() = last() - 2">
+                                                            <tr bgcolor="#D3D3D3">
+                                                                <td>
+                                                                    <xsl:value-of select="name"/>
+                                                                </td>
+                                                                <td>
+                                                                    <xsl:value-of select="location/country"/>
+                                                                </td>
+                                                                <td>
+                                                                    <xsl:for-each select="location/counties/county">
+                                                                        <xsl:sort select="."/>
+                                                                        <xsl:value-of select="."/>
+                                                                        <xsl:if test="position() != last()">
+                                                                            <xsl:text>, </xsl:text>
+                                                                        </xsl:if>
+                                                                    </xsl:for-each>
+                                                                </td>
+                                                                <td>
+                                                                    <xsl:value-of select="location/area"/>
+                                                                </td>
 
-                                                        <td>
-                                                            <xsl:value-of select="gov/@unesco"/>
-                                                        </td>
-                                                    </tr>
+                                                                <td>
+                                                                    <xsl:value-of select="gov/@unesco"/>
+                                                                </td>
+                                                            </tr>
+                                                        </xsl:when>
+                                                        <xsl:otherwise>
+                                                            <tr>
+                                                                <td>
+                                                                    <xsl:value-of select="name"/>
+                                                                </td>
+                                                                <td>
+                                                                    <xsl:value-of select="location/country"/>
+                                                                </td>
+                                                                <td>
+                                                                    <xsl:for-each select="location/counties/county">
+                                                                        <xsl:sort select="."/>
+                                                                        <xsl:value-of select="."/>
+                                                                        <xsl:if test="position() != last()">
+                                                                            <xsl:text>, </xsl:text>
+                                                                        </xsl:if>
+                                                                    </xsl:for-each>
+                                                                </td>
+                                                                <td>
+                                                                    <xsl:value-of select="location/area"/>
+                                                                </td>
+
+                                                                <td>
+                                                                    <xsl:value-of select="gov/@unesco"/>
+                                                                </td>
+                                                            </tr>
+                                                        </xsl:otherwise>
+
+                                                    </xsl:choose>
+
                                                 </xsl:for-each>
                                             </table>
                                         </div>

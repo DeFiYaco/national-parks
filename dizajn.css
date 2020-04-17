@@ -109,8 +109,8 @@ table, th, td {
 }
 
 /* Color every odd row and every third row */
-tr:nth-child(odd) {background: #d3d3d3}
-tr:nth-child(3n) {background: #a9a9a9}
+.table tr:nth-child(odd) {background: #d3d3d3}
+.table tr:nth-child(3n) {background: #a9a9a9}
 
 .post {
 	clear: both;
