@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" 
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-    <xsl:output method="xml" indent="yes" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"/>
     <xsl:template match="/">
         <html>
             <head>
@@ -35,7 +34,8 @@
                                                     <th>Naziv parka</th>
                                                     <th>Država</th>
                                                     <th>Predio</th>
-                                                    <th>Površina (km<sup>2</sup>)</th>
+                                                    <th>Površina (km<sup>2</sup>)
+                                                    </th>
                                                     <th>UNESCO</th>
                                                 </tr>
                                                 <xsl:for-each select="data/nationalPark">
