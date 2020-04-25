@@ -1,4 +1,5 @@
 <?php
-    function query() {
-        
+    function customQuery() {
+        $query = array();
+        return "/data/nationalPark";
     }
