@@ -45,19 +45,19 @@
 								<label>Kontinent:</label>
 								<ul class="formlist">
 									<li>
-										<input type="checkbox" id="africa" name="africa" value="Africa">
+										<input type="checkbox" id="africa" name="continent[]" value="Africa">
 										<label for="africa">Afrika</label><br>
-										<input type="checkbox" id="antarctica" name="antarctica" value="Antarctica">
+										<input type="checkbox" id="antarctica" name="continent[]" value="Antarctica">
 										<label for="antarctica">Antarktika</label><br>
-										<input type="checkbox" id="australia" name="australia" value="Australia">
+										<input type="checkbox" id="australia" name="continent[]" value="Australia">
 										<label for="australia">Australija</label><br>
-										<input type="checkbox" id="samerica" name="samerica" value="SouthAmerica">
+										<input type="checkbox" id="samerica" name="continent[]" value="SouthAmerica">
 										<label for="samerica">Južna Amerika</label><br>
-										<input type="checkbox" id="namerica" name="namerica" value="NorthAmerica">
+										<input type="checkbox" id="namerica" name="continent[]" value="NorthAmerica">
 										<label for="namerica">Sjeverna Amerika</label><br>
-										<input type="checkbox" id="europe" name="europe" value="Europe">
+										<input type="checkbox" id="europe" name="continent[]" value="Europe">
 										<label for="europe">Europa</label><br>
-										<input type="checkbox" id="asia" name="asia" value="Asia">
+										<input type="checkbox" id="asia" name="continent[]" value="Asia">
 										<label for="asia">Azija</label><br>
 									</li>
 
@@ -69,14 +69,17 @@
 								<label for="county">Predio/Županija</label>
 								<input type="text" id="county" name="county">
 
-								<label for="alt">Nadmorska visina</label>
+								<label for="alt">Nadmorska visina (u metrima)</label>
 								<input type="text" id="alt" name="alt">
 
-								<label for="geo">Koordinate</label>
-								<input type="text" id="geo" name="geo">
+								<label for="geo">Geografska širina</label>
+								<input type="text" id="geo" name="latitude" placeholder="51 0 0 S">
+
+								<label for="geo">Geografska duljina</label>
+								<input type="text" id="geo" name="longitude" placeholder="73 0 0 W">
 
 								<label for="surface">Odaberi površinu:</label>
-								<select id="surface" name="surface" multiple>
+								<select id="surface" name="surface[]" multiple>
 									<option value="1">Maleni</option>
 									<option value="2">Srednji</option>
 									<option value="3">Veliki</option>

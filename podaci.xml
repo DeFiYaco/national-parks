@@ -21,8 +21,8 @@
                     <sec>58</sec>
                 </longitude>
             </geo>
-            <altitude>367 m</altitude>
-            <area>296.85</area>
+            <altitude>367</altitude>
+            <area>296</area>
         </location>
         <visitors>1367304</visitors>
         <year>1979</year>
@@ -55,7 +55,7 @@
                     <min>30</min>
                 </longitude>
             </geo>
-            <area>8983.18</area>
+            <area>8983</area>
         </location>
         <visitors>4115000</visitors>
         <year>1978</year>
@@ -112,7 +112,7 @@
                     <sec>7</sec>
                 </longitude>
             </geo>
-            <altitude>200 - 400 m</altitude>
+            <altitude>300</altitude>
             <area>19485</area>
         </location>
         <visitors>1659793</visitors>
@@ -143,7 +143,7 @@
                     <sec>0</sec>
                 </longitude>
             </geo>
-            <area>1814.14</area>
+            <area>1814</area>
         </location>
         <visitors>252447</visitors>
         <year>1959</year>
