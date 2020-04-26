@@ -89,28 +89,23 @@
 
         if (!empty($_REQUEST['surface'])) {
             $surfaceQuery = array();
-            // TODO: multiple selections
-            foreach ($_REQUEST['surface'] as $key) {
-                echo $key;
-            }
-            if ((int)$_REQUEST['surface'] == 1) {
+            if ((int)$_REQUEST['surface'][0] == 1) {
                 $min = 0;
                 $max = 100;
-            } elseif ((int)$_REQUEST['surface'] == 2) {
+            } elseif ((int)$_REQUEST['surface'][0] == 2) {
                 $min = 101;
                 $max = 1000;
-            } elseif ((int)$_REQUEST['surface'] == 3) {
+            } elseif ((int)$_REQUEST['surface'][0] == 3) {
                 $min = 1001;
                 $max = 10000;
-            } elseif ((int)$_REQUEST['surface'] == 4) {
+            } elseif ((int)$_REQUEST['surface'][0] == 4) {
                 $min = 10001;
-                $max = 50000;
+                $max = 35000;
             }
             for ($i=$min; $i < $max; $i++) { 
                 $surfaceQuery[] = "location/area='" . $i . "'";
             }
         }
-
         if (!empty($surfaceQuery))
             $query[] =  "(" . implode( " or ", $surfaceQuery) . ")";
 
