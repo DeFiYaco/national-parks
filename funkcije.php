@@ -89,22 +89,25 @@
 
         if (!empty($_REQUEST['surface'])) {
             $surfaceQuery = array();
-            if ((int)$_REQUEST['surface'][0] == 1) {
-                $min = 0;
-                $max = 100;
-            } elseif ((int)$_REQUEST['surface'][0] == 2) {
-                $min = 101;
-                $max = 1000;
-            } elseif ((int)$_REQUEST['surface'][0] == 3) {
-                $min = 1001;
-                $max = 10000;
-            } elseif ((int)$_REQUEST['surface'][0] == 4) {
-                $min = 10001;
-                $max = 35000;
+            foreach ($_REQUEST['surface'] as $key) {
+                if ($key == 1) {
+                    $min = 0;
+                    $max = 100;
+                } elseif ($key == 2) {
+                    $min = 101;
+                    $max = 1000;
+                } elseif ($key == 3) {
+                    $min = 1001;
+                    $max = 10000;
+                } elseif ($key == 4) {
+                    $min = 10001;
+                    $max = 35000;
+                }
+                for ($i=$min; $i < $max; $i++) { 
+                    $surfaceQuery[] = "location/area='" . $i . "'";
+                }
             }
-            for ($i=$min; $i < $max; $i++) { 
-                $surfaceQuery[] = "location/area='" . $i . "'";
-            }
+            
         }
         if (!empty($surfaceQuery))
             $query[] =  "(" . implode( " or ", $surfaceQuery) . ")";
