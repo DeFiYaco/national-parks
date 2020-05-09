@@ -77,7 +77,7 @@ $all = $xpathvar->query("/data/nationalPark");
                                                 foreach ($queryResult as $result){
                                                     $wikiId = $result->getAttribute('wikiId');
                                                     $wikiJson = getWikimedia($wikiId);
-                                                    $mediaJson = getNearestTownGeo($wikiId);
+                                                    $mediaXml = getNearestTownGeo($wikiId);
                                             ?>
                                                 <tr>
                                                     <td>
@@ -127,11 +127,11 @@ $all = $xpathvar->query("/data/nationalPark");
                                                     </td>
                                                     <td>
                                                         <?php 
-                                                            if(!isset($mediaJson)){
+                                                            if(!isset($mediaXml)){
                                                                 echo "Nema rezultata";
                                                             } else {
-                                                                echo "Geografska širina: " . $mediaJson->place[0]['lat'] . "<br>";
-                                                                echo "Geografska duljina: " . $mediaJson->place[0]['lon'] . "<br>";
+                                                                echo "Geografska širina: " . $mediaXml->place[0]['lat'] . "<br>";
+                                                                echo "Geografska duljina: " . $mediaXml->place[0]['lon'] . "<br>";
                                                             }
                                                         ?>
                                                     </td>

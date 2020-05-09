@@ -54,8 +54,6 @@
           ));
         $data = file_get_contents($url, false, $context);
         return simplexml_load_string($data);
-        #$lon = $xml->place[0]['lon'];
-		#$lat = $xml->place[0]['lat'];
     }
 
     function getWikimedia($wikiId) {
