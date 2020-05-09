@@ -8,6 +8,27 @@ $xmldoc->load('podaci.xml');
 $xpathvar = new Domxpath($xmldoc);
 $customQuery = customQuery();
 $queryResult = $xpathvar->query($customQuery);
+$all = $xpathvar->query("/data/nationalPark");
+// if(!empty($_REQUEST['sort'])){
+//     $parks = iterator_to_array($queryResult);
+//     if ((int)$_REQUEST['sort'] == "asc") {
+//         usort($parks, 'ascsort_by_numeric_id_attr');
+//     } else {
+//         usort($parks, 'descsort_by_numeric_id_attr');
+//     }
+    
+//     $queryResult=$parks;
+// }
+// # Nažalost nije proradilo :(
+// function ascsort_by_numeric_id_attr($a, $b)
+// {
+//     return (int) $a->getAttribute('id') - (int) $b->getAttribute('id');
+// }
+
+// function descsort_by_numeric_id_attr($a, $b)
+// {
+//     return (int) $b->getAttribute('id') - (int) $a->getAttribute('id');
+// }
 
 ?>
 
@@ -38,6 +59,7 @@ $queryResult = $xpathvar->query($customQuery);
                                 <div id="post">
                                     <div id="entry">
                                         <h2>Pronađeni rezultati</h2>
+                                        <h3><?php echo "Pronađeno je ", sizeof($queryResult), " rezultata od mogućih ", sizeof($all); ?></h3>
                                         <table class="table">
                                             <tr>
                                                 <th>Naziv parka</th>
