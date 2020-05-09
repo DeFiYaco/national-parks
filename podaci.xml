@@ -2,7 +2,7 @@
 <!DOCTYPE data SYSTEM "gramatika.dtd">
 <?xml-stylesheet type="text/xsl" href="pretvorba.xsl"?>
 <data>
-    <nationalPark id="np1" wikiId="Q189849">
+    <nationalPark id="np1" wikiId="Plitvice_Lakes_National_Park">
         <name>Plitvička jezera</name>
         <location type="Prirodan" continent="Europa">
             <country>Hrvatska</country>
@@ -34,7 +34,7 @@
         </contact>
         <gov unesco="DA">Javna ustanova Nacionalni park Plitvička jezera</gov>
     </nationalPark>
-    <nationalPark id="np2" wikiId="Q351">
+    <nationalPark id="np2" wikiId="Nacionalni_park_Yellowstone">
         <name>Yellowstone</name>
         <location type="Prirodan" continent="SjevernaAmerika">
             <country>SAD</country>
@@ -61,7 +61,7 @@
         <year>1978</year>
         <gov unesco="DA">U.S. National Park Service</gov>
     </nationalPark>
-    <nationalPark id="np3" wikiId="Q828155">
+    <nationalPark id="np3" wikiId="Nacionalni_park_Krka">
         <name>Krka</name>
         <location type="Prirodan" continent="Europa">
             <country>Hrvatska</country>
@@ -92,7 +92,7 @@
         </contact>
         <gov unesco="DA">Javna ustanova Nacionalni park Krka</gov>
     </nationalPark>
-    <nationalPark id="np4" wikiId="Q24451">
+    <nationalPark id="np4" wikiId="Kruger_National_Park">
         <name>Kruger</name>
         <location type="Prirodan" continent="Afrika">
             <country>JAR</country>
@@ -124,7 +124,7 @@
         </contact>
         <gov unesco="DA">South African National Parks</gov>
     </nationalPark>
-    <nationalPark id="np5" wikiId="Q901646">
+    <nationalPark id="np5" wikiId="Torres_del_Paine_National_Park">
         <name>Torres del Paine</name>
         <location type="Prirodan" continent="JuznaAmerika">
             <country>Čile</country>

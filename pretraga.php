@@ -63,28 +63,63 @@ $all = $xpathvar->query("/data/nationalPark");
                                         <table class="table">
                                             <tr>
                                                 <th>Naziv parka</th>
+                                                <th>Fotografija</th>
+                                                <th>Sažetak</th>
                                                 <th>Država</th>
-                                                <th>Predio</th>
+                                                <!-- <th>Predio</th> -->
+                                                <th>wiki lokacija</th>
                                                 <th>Površina (km<sup>2</sup>)
                                                 </th>
                                                 <th>UNESCO</th>
                                             </tr>
                                             <?php
                                                 foreach ($queryResult as $result){
+                                                    $wikiId = $result->getAttribute('wikiId');
+                                                    $wikiJson = getWikimedia($wikiId);
                                             ?>
                                                 <tr>
                                                     <td>
                                                         <?php echo $result->getElementsByTagName('name')->item(0)->nodeValue; ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $result->getElementsByTagName('country')->item(0)->nodeValue; ?>
+                                                        <?php 
+                                                            if(!isset($wikiJson["thumbnail"])){
+                                                                echo "Nema rezultata";
+                                                            } else {
+                                                                $thumbnail = $wikiJson["thumbnail"]["source"];
+                                                            }
+                                                        ?>
+                                                        <img src=<?php echo $thumbnail ?> width="100" height="100" />
                                                     </td>
                                                     <td>
+                                                        <?php 
+                                                            if(!isset($wikiJson["extract"])){
+                                                                echo "Nema rezultata";
+                                                            } else {
+                                                                echo substr($wikiJson["extract"], 0, 299) . "...";
+                                                            }
+                                                        ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $result->getElementsByTagName('country')->item(0)->nodeValue; ?>
+                                                    </td>
+                                                    <!-- <td>
                                                         <?php
                                                             $link = $result->getElementsByTagName('county');
                                                             for ($i = 0; $i < $link->length; $i++) {
                                                                 echo $result->getElementsByTagName('county')->item($i)->nodeValue;
                                                                 echo '<br/>';
+                                                            }
+                                                        ?>
+                                                    </td> -->
+                                                    <td>
+                                                        <?php 
+                                                            if(!isset($wikiJson["coordinates"])){
+                                                                echo "Nema rezultata";
+                                                            } else {
+                                                                $coordinates = $wikiJson["coordinates"];
+                                                                echo "Geografska širina: " . $coordinates["lat"] . "<br>";
+                                                                echo "Geografska duljina: " . $coordinates["lon"] . "<br>";
                                                             }
                                                         ?>
                                                     </td>

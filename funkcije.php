@@ -1,4 +1,48 @@
 <?php
+
+    function getPicture($wikiId) {
+        if (strstr($wikiId, 'National') !== false) {
+            $url = "https://en.wikipedia.org/w/api.php?action=query&titles="  . $wikiId . "&prop=pageimages&format=json&pithumbsize=100";
+            
+        } else {
+            $url = "https://hr.wikipedia.org/w/api.php?action=query&titles="  . $wikiId . "&prop=pageimages&format=json&pithumbsize=100";
+            
+        }
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch,CURLOPT_URL, $url);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+        curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.A.B.C Safari/525.13");
+        $data = curl_exec($ch);
+        curl_close($ch);
+        $encod = utf8_encode($data);
+        $json = json_decode($encod, true);
+        foreach ($json["query"]["pages"] as $page) {
+            return $page["thumbnail"]["source"];
+        }
+        
+    }
+
+    function getWikimedia($wikiId) {
+        if (strstr($wikiId, 'National') !== false) {
+            $url = "https://en.wikipedia.org/api/rest_v1/page/summary/" . $wikiId;
+            
+        } else {
+            $url = "https://hr.wikipedia.org/api/rest_v1/page/summary/" . $wikiId;
+            
+        }
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+        curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.A.B.C Safari/525.13");
+        $data = curl_exec($ch);
+        curl_close($ch);
+        $json = json_decode($data, true);
+        return $json;
+    }
+
+
     function parser($input) {
         return	"translate(" . $input . ",  'abcdefghijklljmnnjopqrstuvwxyzšđčćž', 'ABCDEFGHIJKLLJMNNJOPQRSTUVWXYZŠĐČĆŽ')";
     }
