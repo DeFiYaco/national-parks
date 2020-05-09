@@ -68,7 +68,8 @@ $all = $xpathvar->query("/data/nationalPark");
                                                 <th>Država</th>
                                                 <!-- <th>Predio</th> -->
                                                 <th>wiki lokacija</th>
-                                                <th>Površina (km<sup>2</sup>)
+                                                <th>Nominatim lokacija</th>
+                                                <!-- <th>Površina (km<sup>2</sup>) -->
                                                 </th>
                                                 <th>UNESCO</th>
                                             </tr>
@@ -76,6 +77,7 @@ $all = $xpathvar->query("/data/nationalPark");
                                                 foreach ($queryResult as $result){
                                                     $wikiId = $result->getAttribute('wikiId');
                                                     $wikiJson = getWikimedia($wikiId);
+                                                    $mediaJson = getNearestTownGeo($wikiId);
                                             ?>
                                                 <tr>
                                                     <td>
@@ -124,8 +126,18 @@ $all = $xpathvar->query("/data/nationalPark");
                                                         ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $result->getElementsByTagName('area')->item(0)->nodeValue; ?>
+                                                        <?php 
+                                                            if(!isset($mediaJson)){
+                                                                echo "Nema rezultata";
+                                                            } else {
+                                                                echo "Geografska širina: " . $mediaJson->place[0]['lat'] . "<br>";
+                                                                echo "Geografska duljina: " . $mediaJson->place[0]['lon'] . "<br>";
+                                                            }
+                                                        ?>
                                                     </td>
+                                                    <!-- <td>
+                                                        <?php echo $result->getElementsByTagName('area')->item(0)->nodeValue; ?>
+                                                    </td> -->
 
                                                     <td>
                                                         <?php 

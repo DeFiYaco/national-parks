@@ -1,11 +1,13 @@
 <?php
 
-    function getPicture($wikiId) {
+    function getNearestTownGeo($wikiId) {
         if (strstr($wikiId, 'National') !== false) {
-            $url = "https://en.wikipedia.org/w/api.php?action=query&titles="  . $wikiId . "&prop=pageimages&format=json&pithumbsize=100";
+            $url = "https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvsection=0&titles="  . $wikiId . "&format=json";
+            $flag=0;
             
         } else {
-            $url = "https://hr.wikipedia.org/w/api.php?action=query&titles="  . $wikiId . "&prop=pageimages&format=json&pithumbsize=100";
+            $url = "https://hr.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvsection=0&titles="  . $wikiId . "&format=json";
+            $flag=1;
             
         }
         $ch = curl_init();
@@ -18,9 +20,42 @@
         $encod = utf8_encode($data);
         $json = json_decode($encod, true);
         foreach ($json["query"]["pages"] as $page) {
-            return $page["thumbnail"]["source"];
+            $unparsedInfobox = $page["revisions"][0]["*"];
+            if($flag === 0){
+                preg_match_all ("|nearest_city\s*=\s*\[\[[a-zA-Z\s]*\]\]|U", $unparsedInfobox, $array);
+                if(isset($array[0][0])){
+                    $cityRaw = explode("=", $array[0][0]);
+                    $cityTrim = ltrim($cityRaw[1]);
+                    $city = substr($cityTrim, 2, -2);
+                    return nominatim($city); 
+                }
+                
+            } else {
+                preg_match_all ("|najbliži grad\s*=\s*\[\[[\p{L}\s]*\]\]|u", $unparsedInfobox, $array);
+                if(isset($array[0][0])){
+                    $cityRaw = explode("=", $array[0][0]);
+                    $cityTrim = ltrim($cityRaw[1]);
+                    $city = substr($cityTrim, 2, -2);
+                    return nominatim($city);  
+                }
+            }
+            
         }
         
+    }
+
+    function nominatim($address){
+        $url = "https://nominatim.openstreetmap.org/search?q="  . urlencode($address) . "&format=xml";
+        $context = stream_context_create(
+            array(
+              'http' => array(
+                'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36',
+              ),
+          ));
+        $data = file_get_contents($url, false, $context);
+        return simplexml_load_string($data);
+        #$lon = $xml->place[0]['lon'];
+		#$lat = $xml->place[0]['lat'];
     }
 
     function getWikimedia($wikiId) {
