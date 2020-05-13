@@ -44,6 +44,50 @@
         
     }
 
+    function getVisitors($wikiId) {
+        if (strstr($wikiId, 'National') !== false) {
+            $url = "https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvsection=0&titles="  . $wikiId . "&format=json";
+            $flag=0;
+            
+        } else {
+            $url = "https://hr.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvsection=0&titles="  . $wikiId . "&format=json";
+            $flag=1;
+            
+        }
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch,CURLOPT_URL, $url);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+        curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.A.B.C Safari/525.13");
+        $data = curl_exec($ch);
+        curl_close($ch);
+        $encod = utf8_encode($data);
+        $json = json_decode($encod, true);
+        foreach ($json["query"]["pages"] as $page) {
+            $unparsedInfobox = $page["revisions"][0]["*"];
+            if($flag === 0){
+                preg_match_all ("|visitation_num\s*=\s*[\d.,]*|", $unparsedInfobox, $array);
+                if(isset($array[0][0])){
+                    $visitorsRaw = explode("=", $array[0][0]);
+                    $visitorsTrim = ltrim($visitorsRaw[1]);
+                    
+                    return $visitorsTrim; 
+                }
+                
+            } else {
+                preg_match_all ("|broj posjetitelja\s*=\s*[\d.,]*|", $unparsedInfobox, $array);
+                if(isset($array[0][0])){
+                    $visitorsRaw = explode("=", $array[0][0]);
+                    $visitorsTrim = ltrim($visitorsRaw[1]);
+                    
+                    return $visitorsTrim;  
+                }
+            }
+            
+        }
+        
+    }
+
     function nominatim($address){
         $url = "https://nominatim.openstreetmap.org/search?q="  . urlencode($address) . "&format=xml";
         $context = stream_context_create(

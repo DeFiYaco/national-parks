@@ -1,0 +1,3 @@
+Kao dodatni podatak sam odabrao godisnji broj posjetitelja pojedinog nacionalnog parka jer sam vidio da se taj podatak
+nalazi u infobox dijelu za svaki nacionalni park od ovih koji su odabrani kod mene.
+Extractao sam ga na sličan način kao i lokaciju, koristeći API i regularne izraze.

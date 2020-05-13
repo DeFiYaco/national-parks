@@ -71,7 +71,8 @@ $all = $xpathvar->query("/data/nationalPark");
                                                 <th>Nominatim lokacija</th>
                                                 <!-- <th>Površina (km<sup>2</sup>) -->
                                                 </th>
-                                                <th>UNESCO</th>
+                                                <!-- <th>UNESCO</th> -->
+                                                <th>Posjetitelji godišnje</th>
                                             </tr>
                                             <?php
                                                 
@@ -86,6 +87,7 @@ $all = $xpathvar->query("/data/nationalPark");
                                                     $mediaXml = getNearestTownGeo($wikiId);
                                                     $nominatim_post = microtime(true);
                                                     $nominatim_time = $nominatim_post - $nominatim_pre;
+                                                    $visitors = getVisitors($wikiId);
                                             ?>
                                                 <tr>
                                                     <td>
@@ -153,9 +155,14 @@ $all = $xpathvar->query("/data/nationalPark");
                                                         <?php echo $result->getElementsByTagName('area')->item(0)->nodeValue; ?>
                                                     </td> -->
 
-                                                    <td>
+                                                    <!-- <td>
                                                         <?php 
                                                             echo $result->getElementsByTagName('gov')->item(0)->getAttribute('unesco');
+                                                        ?>
+                                                    </td> -->
+                                                    <td>
+                                                        <?php 
+                                                            echo $visitors;
                                                         ?>
                                                     </td>
                                                 </tr>
