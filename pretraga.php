@@ -74,10 +74,18 @@ $all = $xpathvar->query("/data/nationalPark");
                                                 <th>UNESCO</th>
                                             </tr>
                                             <?php
+                                                
                                                 foreach ($queryResult as $result){
+                                                    
                                                     $wikiId = $result->getAttribute('wikiId');
+                                                    $wikiMedia_pre = microtime(true);
                                                     $wikiJson = getWikimedia($wikiId);
+                                                    $wikiMedia_post = microtime(true);
+                                                    $wikiMedia_time = $wikiMedia_post - $wikiMedia_pre;
+                                                    $nominatim_pre = microtime(true);
                                                     $mediaXml = getNearestTownGeo($wikiId);
+                                                    $nominatim_post = microtime(true);
+                                                    $nominatim_time = $nominatim_post - $nominatim_pre;
                                             ?>
                                                 <tr>
                                                     <td>
@@ -86,9 +94,11 @@ $all = $xpathvar->query("/data/nationalPark");
                                                     <td>
                                                         <?php 
                                                             if(!isset($wikiJson["thumbnail"])){
+                                                                echo "Potrebno vrijeme dohvata:" . $wikiMedia_time . " sekundi" . "<br>";
                                                                 echo "Nema rezultata";
                                                             } else {
                                                                 $thumbnail = $wikiJson["thumbnail"]["source"];
+                                                                echo "Potrebno vrijeme dohvata:" . $wikiMedia_time . " sekundi" . "<br>";
                                                             }
                                                         ?>
                                                         <img src=<?php echo $thumbnail ?> width="100" height="100" />
@@ -117,9 +127,11 @@ $all = $xpathvar->query("/data/nationalPark");
                                                     <td>
                                                         <?php 
                                                             if(!isset($wikiJson["coordinates"])){
+                                                                echo "Potrebno vrijeme dohvata:" . $wikiMedia_time . " sekundi" . "<br>";
                                                                 echo "Nema rezultata";
                                                             } else {
                                                                 $coordinates = $wikiJson["coordinates"];
+                                                                echo "Potrebno vrijeme dohvata:" . $wikiMedia_time . " sekundi" . "<br>";
                                                                 echo "Geografska širina: " . $coordinates["lat"] . "<br>";
                                                                 echo "Geografska duljina: " . $coordinates["lon"] . "<br>";
                                                             }
@@ -128,8 +140,10 @@ $all = $xpathvar->query("/data/nationalPark");
                                                     <td>
                                                         <?php 
                                                             if(!isset($mediaXml)){
+                                                                echo "Potrebno vrijeme dohvata:" . $nominatim_time . " sekundi" . "<br>";
                                                                 echo "Nema rezultata";
                                                             } else {
+                                                                echo "Potrebno vrijeme dohvata:" . $nominatim_time . " sekundi" . "<br>";
                                                                 echo "Geografska širina: " . $mediaXml->place[0]['lat'] . "<br>";
                                                                 echo "Geografska duljina: " . $mediaXml->place[0]['lon'] . "<br>";
                                                             }
@@ -145,7 +159,9 @@ $all = $xpathvar->query("/data/nationalPark");
                                                         ?>
                                                     </td>
                                                 </tr>
-                                                <?php } ?>
+                                                <?php }
+                                                   
+                                                ?>
                                             </xsl:for-each>
                                         </table>
                                     </div>
