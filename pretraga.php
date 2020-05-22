@@ -38,6 +38,7 @@ $all = $xpathvar->query("/data/nationalPark");
         <title>Nacionalni parkovi</title>
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600' rel='stylesheet' type='text/css' />
         <link href="dizajn.css" rel="stylesheet" type="text/css" media="screen" />
+        <script src="detalji.js"></script>
     </head>
         <body>
             <div id="wrapper">
@@ -64,20 +65,21 @@ $all = $xpathvar->query("/data/nationalPark");
                                             <tr>
                                                 <th>Naziv parka</th>
                                                 <th>Fotografija</th>
-                                                <th>Sažetak</th>
+                                                <!-- <th>Sažetak</th> -->
                                                 <th>Država</th>
                                                 <!-- <th>Predio</th> -->
-                                                <th>wiki lokacija</th>
-                                                <th>Nominatim lokacija</th>
+                                                <!-- <th>wiki lokacija</th>
+                                                <th>Nominatim lokacija</th> -->
                                                 <!-- <th>Površina (km<sup>2</sup>) -->
                                                 </th>
                                                 <!-- <th>UNESCO</th> -->
-                                                <th>Posjetitelji godišnje</th>
+                                                <!-- <th>Posjetitelji godišnje</th> -->
+                                                <th>Akcija</th>
                                             </tr>
                                             <?php
                                                 
                                                 foreach ($queryResult as $result){
-                                                    
+                                                    $id = $result->getAttribute('id');
                                                     $wikiId = $result->getAttribute('wikiId');
                                                     $wikiMedia_pre = microtime(true);
                                                     $wikiJson = getWikimedia($wikiId);
@@ -89,7 +91,7 @@ $all = $xpathvar->query("/data/nationalPark");
                                                     $nominatim_time = $nominatim_post - $nominatim_pre;
                                                     $visitors = getVisitors($wikiId);
                                             ?>
-                                                <tr>
+                                                <tr onmouseover="promijeniBoju(this)">
                                                     <td>
                                                         <?php echo $result->getElementsByTagName('name')->item(0)->nodeValue; ?>
                                                     </td>
@@ -105,7 +107,7 @@ $all = $xpathvar->query("/data/nationalPark");
                                                         ?>
                                                         <img src=<?php echo $thumbnail ?> width="100" height="100" />
                                                     </td>
-                                                    <td>
+                                                    <!-- <td>
                                                         <?php 
                                                             if(!isset($wikiJson["extract"])){
                                                                 echo "Nema rezultata";
@@ -113,7 +115,7 @@ $all = $xpathvar->query("/data/nationalPark");
                                                                 echo substr($wikiJson["extract"], 0, 299) . "...";
                                                             }
                                                         ?>
-                                                    </td>
+                                                    </td> -->
                                                     <td>
                                                         <?php echo $result->getElementsByTagName('country')->item(0)->nodeValue; ?>
                                                     </td>
@@ -126,7 +128,7 @@ $all = $xpathvar->query("/data/nationalPark");
                                                             }
                                                         ?>
                                                     </td> -->
-                                                    <td>
+                                                    <!-- <td>
                                                         <?php 
                                                             if(!isset($wikiJson["coordinates"])){
                                                                 echo "Potrebno vrijeme dohvata:" . $wikiMedia_time . " sekundi" . "<br>";
@@ -150,7 +152,7 @@ $all = $xpathvar->query("/data/nationalPark");
                                                                 echo "Geografska duljina: " . $mediaXml->place[0]['lon'] . "<br>";
                                                             }
                                                         ?>
-                                                    </td>
+                                                    </td> -->
                                                     <!-- <td>
                                                         <?php echo $result->getElementsByTagName('area')->item(0)->nodeValue; ?>
                                                     </td> -->
@@ -160,10 +162,13 @@ $all = $xpathvar->query("/data/nationalPark");
                                                             echo $result->getElementsByTagName('gov')->item(0)->getAttribute('unesco');
                                                         ?>
                                                     </td> -->
-                                                    <td>
+                                                    <!-- <td>
                                                         <?php 
                                                             echo $visitors;
                                                         ?>
+                                                    </td> -->
+                                                    <td>
+                                                            <button type="button" onclick="detalji('<?php echo $id; ?>')" >Detalji</button>
                                                     </td>
                                                 </tr>
                                                 <?php }
@@ -208,7 +213,9 @@ $all = $xpathvar->query("/data/nationalPark");
                                 </ul>
                             </div>
                             <!-- end #sidebar -->
+                            <div id="details"></div>
                             <div class="nbsp">&#160;</div>
+                            
                         </div>
                     </div>
                     <!-- end #page -->
@@ -218,5 +225,6 @@ $all = $xpathvar->query("/data/nationalPark");
                 </div>
                 <!-- end #footer -->
             </div>
+            
         </body>
 </html>

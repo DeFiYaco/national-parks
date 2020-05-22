@@ -232,6 +232,14 @@ form {
 	column-count: 2;
 }
 
+/* Details */
+#details {
+	float: left;
+	float: left;
+	width: 200px;
+	padding: 0px 0px 0px 0px;
+}
+
 
 
 /* Footer */
