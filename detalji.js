@@ -1,10 +1,11 @@
 function promijeniBoju(moj_red_tablice) {
-    moj_red_tablice.style.backgroundColor = "#336699"
+    moj_red_tablice.style.backgroundColor = "#336699";
 }
 
-let req;
-function detalji(id) {
+var req;
 
+function detalji(id) {
+	
     if (window.XMLHttpRequest) {
         req = new XMLHttpRequest();
     } else if (window.ActiveXObject) {
@@ -15,7 +16,7 @@ function detalji(id) {
         req.open("GET", "detalji.php?id=" + id + "&show=simple", true);
         req.send(null);
         document.getElementById("details").innerHTML = '<img src="images/spinning.gif" alt="Učitavanje..." />';
-        req.onreadystatechange = () => {
+        req.onreadystatechange = function() {
             if (req.readyState == 4) { // primitak odgovora
                 if (req.status == 200) { // kôd statusa odgovora = 200 OK
                     document.getElementById("details").innerHTML = req.responseText;
@@ -28,12 +29,12 @@ function detalji(id) {
 }
 
 var map;
-let init = 0;
-let marker1;
-let marker2;
+var init = 0;
+var marker1;
+var marker2;
 
 function leafletTile(lat, lon, title, latNominatim, lonNominatim) {
-    let coordinates = [];
+    var coordinates = [];
     document.getElementById("map").style.visibility = 'visible';
     if (!init) {
         map = L.map('map').setView([lat, lon], 5);
@@ -65,7 +66,7 @@ function leafletTile(lat, lon, title, latNominatim, lonNominatim) {
     }
 
     if (coordinates.length === 2) {
-        let polyline = L.polyline(coordinates, { color: 'red' }).addTo(map);
+        var polyline = L.polyline(coordinates, { color: 'red' }).addTo(map);
         map.fitBounds(polyline.getBounds());
     }
 
