@@ -26,3 +26,47 @@ function detalji(id) {
         };
     }
 }
+
+var map;
+let init = 0;
+let marker1;
+let marker2;
+
+function leafletTile(lat, lon, title, latNominatim, lonNominatim) {
+    let coordinates = [];
+    document.getElementById("map").style.visibility = 'visible';
+    if (!init) {
+        map = L.map('map').setView([lat, lon], 5);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        init = 1;
+    }
+
+    try {
+        map.removeLayer(marker1);
+        map.removeLayer(marker2);
+    } catch (err) { }
+    if (lat.includes("null")) {
+        console.log("wiki Location not available")
+    } else {
+        coordinates.push([lat, lon]);
+        marker1 = L.marker([lat, lon]).addTo(map)
+            .bindPopup(title)
+            .openPopup();
+    }
+    if (latNominatim.includes("null")) {
+        console.log("nominatim location not available")
+    } else {
+        coordinates.push([latNominatim, lonNominatim]);
+        marker2 = L.marker([latNominatim, lonNominatim]).addTo(map)
+            .bindPopup(title + " nominatim")
+            .openPopup();
+    }
+
+    if (coordinates.length === 2) {
+        let polyline = L.polyline(coordinates, { color: 'red' }).addTo(map);
+        map.fitBounds(polyline.getBounds());
+    }
+
+}

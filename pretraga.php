@@ -38,6 +38,8 @@ $all = $xpathvar->query("/data/nationalPark");
         <title>Nacionalni parkovi</title>
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600' rel='stylesheet' type='text/css' />
         <link href="dizajn.css" rel="stylesheet" type="text/css" media="screen" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script> 
         <script src="detalji.js"></script>
     </head>
         <body>
@@ -90,6 +92,8 @@ $all = $xpathvar->query("/data/nationalPark");
                                                     $nominatim_post = microtime(true);
                                                     $nominatim_time = $nominatim_post - $nominatim_pre;
                                                     $visitors = getVisitors($wikiId);
+                                                    $wikiFlag=0;
+                                                    $nominatimFlag=0;
                                             ?>
                                                 <tr onmouseover="promijeniBoju(this)">
                                                     <td>
@@ -138,6 +142,7 @@ $all = $xpathvar->query("/data/nationalPark");
                                                                 echo "Potrebno vrijeme dohvata:" . $wikiMedia_time . " sekundi" . "<br>";
                                                                 echo "Geografska širina: " . $coordinates["lat"] . "<br>";
                                                                 echo "Geografska duljina: " . $coordinates["lon"] . "<br>";
+                                                                $wikiFlag=1;
                                                             }
                                                         ?>
                                                     </td>
@@ -150,6 +155,7 @@ $all = $xpathvar->query("/data/nationalPark");
                                                                 echo "Potrebno vrijeme dohvata:" . $nominatim_time . " sekundi" . "<br>";
                                                                 echo "Geografska širina: " . $mediaXml->place[0]['lat'] . "<br>";
                                                                 echo "Geografska duljina: " . $mediaXml->place[0]['lon'] . "<br>";
+                                                                $nominatimFlag=1;
                                                             }
                                                         ?>
                                                     </td> -->
@@ -168,7 +174,7 @@ $all = $xpathvar->query("/data/nationalPark");
                                                         ?>
                                                     </td> -->
                                                     <td>
-                                                            <button type="button" onclick="detalji('<?php echo $id; ?>')" >Detalji</button>
+                                                            <button type="button" onclick="detalji('<?php echo $id; ?>'); leafletTile('<?php if($wikiFlag === 0){echo 'null';} else {echo $coordinates['lat'];} ?>', '<?php if($wikiFlag === 0){echo 'null';} else {echo $coordinates['lon'];} ?>', '<?php echo $result->getElementsByTagName('name')->item(0)->nodeValue; ?>', '<?php if($nominatimFlag === 0){echo 'null';} else {echo $mediaXml->place[0]['lat'];} ?>', '<?php if($nominatimFlag === 0){echo 'null';} else {echo $mediaXml->place[0]['lon'];} ?>')" >Detalji</button>
                                                     </td>
                                                 </tr>
                                                 <?php }
@@ -176,9 +182,11 @@ $all = $xpathvar->query("/data/nationalPark");
                                                 ?>
                                             </xsl:for-each>
                                         </table>
+                                        
                                     </div>
                                     <div class="nbsp">&#160;
                                     </div>
+                                    <div id="map"></div>
                                 </div>
                             </div>
                             <!-- end #content -->
