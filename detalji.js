@@ -5,7 +5,6 @@ function promijeniBoju(moj_red_tablice) {
 var req;
 
 function detalji(id, title) {
-    console.log(title);
     if (window.XMLHttpRequest) {
         req = new XMLHttpRequest();
     } else if (window.ActiveXObject) {
@@ -32,11 +31,9 @@ function detalji(id, title) {
     }
     if (req1) {
         if(title.includes("Nacionalni")){
-            console.log("hrvatska");
             req1.open("GET", "https://hr.wikipedia.org/api/rest_v1/page/html/" + title, true);
         }
         else {
-            console.log("engleska");
             req1.open("GET", "https://en.wikipedia.org/api/rest_v1/page/html/" + title, true);
         }
         
