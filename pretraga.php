@@ -174,7 +174,7 @@ $all = $xpathvar->query("/data/nationalPark");
                                                         ?>
                                                     </td> -->
                                                     <td>
-                                                            <button type="button" onclick="detalji('<?php echo $id; ?>'); leafletTile('<?php if($wikiFlag === 0){echo 'null';} else {echo $coordinates['lat'];} ?>', '<?php if($wikiFlag === 0){echo 'null';} else {echo $coordinates['lon'];} ?>', '<?php echo $result->getElementsByTagName('name')->item(0)->nodeValue; ?>', '<?php if($nominatimFlag === 0){echo 'null';} else {echo $mediaXml->place[0]['lat'];} ?>', '<?php if($nominatimFlag === 0){echo 'null';} else {echo $mediaXml->place[0]['lon'];} ?>')" >Detalji</button>
+                                                            <button type="button" onclick="detalji('<?php echo $id; ?>', '<?php echo $wikiId; ?>'); leafletTile('<?php if($wikiFlag === 0){echo 'null';} else {echo $coordinates['lat'];} ?>', '<?php if($wikiFlag === 0){echo 'null';} else {echo $coordinates['lon'];} ?>', '<?php echo $result->getElementsByTagName('name')->item(0)->nodeValue; ?>', '<?php if($nominatimFlag === 0){echo 'null';} else {echo $mediaXml->place[0]['lat'];} ?>', '<?php if($nominatimFlag === 0){echo 'null';} else {echo $mediaXml->place[0]['lon'];} ?>')" >Detalji</button>
                                                     </td>
                                                 </tr>
                                                 <?php }
@@ -187,6 +187,7 @@ $all = $xpathvar->query("/data/nationalPark");
                                     <div class="nbsp">&#160;
                                     </div>
                                     <div id="map"></div>
+                                    <iframe id="wikihtml" style="width:0; height:0; border:0; border:none"></iframe>
                                 </div>
                             </div>
                             <!-- end #content -->

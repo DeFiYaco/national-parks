@@ -4,15 +4,14 @@ function promijeniBoju(moj_red_tablice) {
 
 var req;
 
-function detalji(id) {
-	
+function detalji(id, title) {
+    console.log(title);
     if (window.XMLHttpRequest) {
         req = new XMLHttpRequest();
     } else if (window.ActiveXObject) {
         new ActiveXObject("Microsoft.XMLHTTP");
     }
     if (req) {
-
         req.open("GET", "detalji.php?id=" + id + "&show=simple", true);
         req.send(null);
         document.getElementById("details").innerHTML = '<img src="images/spinning.gif" alt="Učitavanje..." />';
@@ -22,6 +21,35 @@ function detalji(id) {
                     document.getElementById("details").innerHTML = req.responseText;
                 } else { // kôd statusa nije OK
                     alert("Nije primljen 200 OK, nego:\n" + req.statusText);
+                }
+            }
+        };
+    }
+    if (window.XMLHttpRequest) {
+        req1 = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+        new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    if (req1) {
+        if(title.includes("Nacionalni")){
+            console.log("hrvatska");
+            req1.open("GET", "https://hr.wikipedia.org/api/rest_v1/page/html/" + title, true);
+        }
+        else {
+            console.log("engleska");
+            req1.open("GET", "https://en.wikipedia.org/api/rest_v1/page/html/" + title, true);
+        }
+        
+        req1.send(null);
+        document.getElementById("details").innerHTML = '<img src="images/spinning.gif" alt="Učitavanje..." />';
+        req1.onreadystatechange = function() {
+            if (req1.readyState == 4) { // primitak odgovora
+                if (req1.status == 200) { // kôd statusa odgovora = 200 OK
+                    document.getElementById("wikihtml").srcdoc = req1.responseText;
+                    document.getElementById("wikihtml").style.width = "650px";
+                    document.getElementById("wikihtml").style.height = '1000px';
+                } else { // kôd statusa nije OK
+                    alert("Nije primljen 200 OK, nego:\n" + req1.statusText);
                 }
             }
         };
