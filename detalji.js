@@ -38,7 +38,6 @@ function detalji(id, title) {
         }
         
         req1.send(null);
-        document.getElementById("details").innerHTML = '<img src="images/spinning.gif" alt="Učitavanje..." />';
         req1.onreadystatechange = function() {
             if (req1.readyState == 4) { // primitak odgovora
                 if (req1.status == 200) { // kôd statusa odgovora = 200 OK
